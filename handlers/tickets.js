@@ -139,12 +139,8 @@ async function grantApplicationRole(interaction) {
   const canApprove = await canApproveApplication(interaction.member, interaction.guild);
 
   if (!canApprove) {
-    const roleList = config.roles.staff.join(", ");
     return safeReply(interaction, {
-      content:
-        `Bu butonu kullanma yetkin yok.\n` +
-        `Senin kullanıcı ID'n: \`${interaction.user.id}\`\n` +
-        `Onay için \`.env\` → \`APPROVER_USER_IDS\` listesinde olmalı veya şu staff rollerinden birine sahip olmalısın: ${roleList}`,
+      content: "Bu butonu yalnızca yetkililer kullanabilir.",
       ephemeral: true,
     });
   }
